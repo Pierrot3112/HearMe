@@ -1,0 +1,15 @@
+{
+    "header" : {
+        "logo" : "HearMe",
+        "menus" : {
+            "menu1" : "Menu 1",
+            "menu2" : "Menu 2",
+            "menu3" : "Menu 3",
+            "menu4" : "Menu 4"
+        },
+        "button" : {
+            "1" : "S'inscrire",
+            "2" : "Se connecter"
+        }
+    }
+}
