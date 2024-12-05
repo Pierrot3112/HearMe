@@ -1,15 +1,75 @@
 {
-    "header" : {
-        "logo" : "HearMe",
-        "menus" : {
-            "menu1" : "Menu 1",
-            "menu2" : "Menu 2",
-            "menu3" : "Menu 3",
-            "menu4" : "Menu 4"
-        },
-        "button" : {
-            "1" : "S'inscrire",
-            "2" : "Se connecter"
-        }
+  "header": {
+    "logo": "HEARME",
+    "menus": {
+      "menu1": "Accueil",
+      "menu2": "À Propos",
+      "menu3": "Cours",
+      "menu4": "Contact"
+    },
+    "buttons": {
+      "1": "S'inscrire",
+      "2": "Se connecter",
+      "contact": "Contactez-nous"
     }
+  },
+  "hero": {
+    "home": {
+      "title": "Bienvenue Sur ",
+      "description": "Votre plateforme d'apprentissage accessible en langue des signes. Découvrez nos formations accessibles dès aujourd'hui !",
+      "button": "Commencer"
+    }
+  },
+  "features": [
+    {
+      "icon": "LightbulbOutlinedIcon",
+      "title": "Exercices et Quiz"
+    },
+    {
+      "icon": "MenuBookOutlinedIcon",
+      "title": "Cours et Formations"
+    },
+    {
+      "icon": "SmartToyOutlinedIcon",
+      "title": "AI-Langage de signe"
+    },
+    {
+      "icon": "WorkspacePremiumOutlinedIcon",
+      "title": "Examens et Certificats"
+    }
+  ],
+  "formations": [
+    {
+      "id": 1,
+      "title": "Agriculture",
+      "image": "/fond.jfif",
+      "description": "Ce cours est dédié aux passionnés et débutants dans le domaine de l'agri-business. Avec des modules de formations complets.",
+      "author": "/logo.jpg",
+      "statut": "Gratuit >>"
+    },
+    {
+      "id": 2,
+      "title": "Éducation",
+      "image": "/fond.jfif",
+      "description": "Un cours complet pour les éducateurs et formateurs désireux de découvrir des outils pédagogiques modernes.",
+      "author": "/logo.jpg",
+      "statut": "Payant >>"
+    },
+    {
+      "id": 3,
+      "title": "Informatique",
+      "image": "/fond.jfif",
+      "description": "Apprenez les bases de la programmation et développez vos compétences en informatique dès aujourd'hui.",
+      "author": "/logo.jpg",
+      "statut": "Gratuit >>"
+    },
+    {
+      "id": 4,
+      "title": "Langue des Signes",
+      "image": "/fond.jfif",
+      "description": "Découvrez le langage des signes pour mieux communiquer avec les personnes malentendantes.",
+      "author": "/logo.jpg",
+      "statut": "Gratuit >>"
+    }
+  ]
 }
