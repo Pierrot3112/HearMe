@@ -30,8 +30,8 @@ const Header = () => {
   ];
 
   const buttonItems = [
-    { label: data.header.buttons[1], className: "btn-1" },
-    { label: data.header.buttons[2], className: "btn-2" }
+    { label: data.header.buttons[1], className: "btn-1", urls: data.header.buttons.urls[1] },
+    { label: data.header.buttons[2], className: "btn-2", urls: data.header.buttons.urls[2] },
   ];
 
   return (
@@ -58,7 +58,7 @@ const Header = () => {
                 <li key={index} className="nav-item btn-box">
                   <a
                     className={`nav-link ${button.className}`}
-                    href="#auth">
+                    href={button.urls}>
                     {button.label}
                   </a>
                 </li>

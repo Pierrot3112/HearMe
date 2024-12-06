@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import axios from "axios";
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from '../Auth/actions/autActions';
 import { useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -7,26 +8,31 @@ import image from "/fond.jfif";
 import "../style/register.scss";
 
 const LoginPage = () => {
-    const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
+    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState('');
+    const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        
-        axios.post( 'http://localhost:5000/login', {email, password})
-        .then(result => {
-            console.log(result);
-            if(result.data === "Success"){
-                console.log("Login Success");
-                alert('Login successful!')
-                navigate('/');
-            }
-            else{
-                toast.error('Incorrect password! Please try again.');
-            }
-        })
-        .catch(err => console.log(err));
+    const { isLoggedIn, error } = useSelector((state) => state.auth);
+
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        try {
+            await dispatch(login(email, password));
+            toast.success("Connexion réussie !");
+            navigate("/dashboard");
+        } catch (err) {
+            toast.error("Impossible de se connecter, vérifiez vos informations.");
+        }
+    };
+
+    // Affichage du message d'erreur si il existe
+    if (error) {
+        toast.error(error);
+    }
+
+    if (isLoggedIn) {
+        navigate('/dashboard');
     }
 
     return (
@@ -50,20 +56,20 @@ const LoginPage = () => {
             <div className="right-section">
                 <h2>Connexion</h2>
                 <div className="underline"></div>
-                <form className="register-form" onSubmit={handleSubmit}>
+                <form className="register-form" onSubmit={handleLogin}>
                     <input
-                         type="email" 
-                         placeholder="Enter Email"
-                         id="exampleInputEmail1" 
-                         onChange={(event) => setEmail(event.target.value)}
-                         required
+                        type="email"
+                        placeholder="Enter Email"
+                        id="exampleInputEmail1"
+                        onChange={(event) => setEmail(event.target.value)}
+                        required
                     />
                     <input
-                          type="password" 
-                          placeholder="Enter Password"
-                          id="exampleInputPassword1" 
-                          onChange={(event) => setPassword(event.target.value)}
-                          required
+                        type="password"
+                        placeholder="Enter Password"
+                        id="exampleInputPassword1"
+                        onChange={(event) => setPassword(event.target.value)}
+                        required
                     />
                     <button type="submit">Se connecter</button>
                 </form>

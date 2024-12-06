@@ -10,7 +10,10 @@
     "buttons": {
       "1": "S'inscrire",
       "2": "Se connecter",
-      "contact": "Contactez-nous"
+      "urls": {
+        "1": "/register",
+        "2": "/login"
+      }
     }
   },
   "hero": {

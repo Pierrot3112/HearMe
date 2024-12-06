@@ -19,7 +19,7 @@ $black-text: #0D0D0D;
     height: 100vh;
     overflow: hidden; // Ensures no overflow due to video or content
 
-    video, img {
+    img {
         height: 100%;
         width: 100%;
         object-fit: cover;
