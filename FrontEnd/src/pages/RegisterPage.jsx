@@ -22,10 +22,12 @@ const RegisterPage = () => {
       toast.error("Les mots de passe ne correspondent pas !");
       return;
     }
+    const urlAPi = process.env.REACT_APP_API_URL || "http://localhost:8080";
   
     try {
+
       // Requête d'inscription
-      const response = await axios.post("http://localhost:8080/api/auth/signup", {
+      const response = await axios.post(`${urlAPi}/api/auth/signup`, {
         username,
         email,
         password,
@@ -44,6 +46,8 @@ const RegisterPage = () => {
         toast.error(error.response.data.message || "Erreur lors de l'inscription.");
       } else {
         toast.error("Une erreur réseau est survenue, veuillez réessayer !");
+        console.log(urlAPi);
+        
       }
     }
   };

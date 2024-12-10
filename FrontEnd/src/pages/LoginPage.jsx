@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../Auth/actions/autActions';
 import { useNavigate } from 'react-router-dom';
@@ -15,6 +15,16 @@ const LoginPage = () => {
 
     const { isLoggedIn, error } = useSelector((state) => state.auth);
 
+    useEffect(() => {
+        if (isLoggedIn) {
+            navigate("/dashboard");
+        }
+
+        if (error) {
+            toast.error(error);
+        }
+    }, [isLoggedIn, error, navigate]);
+
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
@@ -22,18 +32,9 @@ const LoginPage = () => {
             toast.success("Connexion réussie !");
             navigate("/dashboard");
         } catch (err) {
-            toast.error("Impossible de se connecter, vérifiez vos informations.");
+            toast.error(err.message || "Impossible de se connecter, vérifiez vos informations.");
         }
     };
-
-    // Affichage du message d'erreur si il existe
-    if (error) {
-        toast.error(error);
-    }
-
-    if (isLoggedIn) {
-        navigate('/dashboard');
-    }
 
     return (
         <div className="register-container">
