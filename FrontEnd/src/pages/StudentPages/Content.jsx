@@ -3,6 +3,7 @@ import "./d.scss";
 import Home from "./Home";
 import Courses from "./Courses";
 import Evaluation from "./Evaluation";
+import Certification from "./Certification";
 
 const Content = ({ activeMenu }) => {
   let content;
@@ -16,6 +17,9 @@ const Content = ({ activeMenu }) => {
       break;
     case "evaluation":
       content = <Evaluation />;
+      break;
+    case "":
+      content = <Certification />;
       break;
   }
 

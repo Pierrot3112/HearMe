@@ -8,7 +8,7 @@ const Home = () => {
         <div>
             <Header/>
             <hr />
-            <section className='content'>
+            <section className='contentC'>
                 <div className="content-header">
                     <h3>Allons apprendre  <EastOutlined /></h3>
                     <button className="btn btn-primary">Commencer</button>

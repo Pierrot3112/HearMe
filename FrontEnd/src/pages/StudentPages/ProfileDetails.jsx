@@ -1,59 +1,58 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";  // Importer useNavigate pour gérer la navigation
+import { useNavigate } from "react-router-dom"; 
+import { Box, Button, Typography, Avatar, IconButton } from "@mui/material";
 import img_url from "../../assets/images/user.jpg";
-import poste_icon from "../../assets/images/user.jpg";  // Assurez-vous de l'existence de ces images
-import level_icon from "../../assets/images/user.jpg";  // Assurez-vous de l'existence de ces images
-import point_icon from "../../assets/images/user.jpg";  // Assurez-vous de l'existence de ces images
+import poste_icon from "../../assets/images/user.jpg"; 
+import level_icon from "../../assets/images/user.jpg"; 
+import point_icon from "../../assets/images/user.jpg"; 
 
 const ProfileDetails = () => {
-  const navigate = useNavigate();  // Créer une instance de navigate
+  const navigate = useNavigate(); 
 
-  // Données à afficher dans le profil
   const second_row = [
     { id: 0, title: "Poste", value: "Graphiste textile", icon: poste_icon },
     { id: 1, title: "Niveau", value: "Débutant", icon: level_icon },
     { id: 2, title: "Point Obtenu", value: "400 PX", icon: point_icon },
   ];
 
-  // Fonction pour revenir à la page précédente
   const handleBack = () => {
-    navigate(-1);  // Navigue vers la page précédente dans l'historique du navigateur
+    navigate(-1); 
   };
 
   return (
-    <div className="container-fluid profile-section">
-      <div className="row">
+    <Box className="container-fluid profile-section">
+      <Box className="row">
         {/* Première colonne - Profil principal */}
-        <div className="col first-col">
-          <div className="close" onClick={handleBack}>x</div> {/* Bouton de retour */}
-          <div className="centered">
-            <div className="profile-title">Mon Profil</div>
-            <div className="img-container">
-              <img src={img_url} alt="Profil image" className="profile-img" />
-            </div>
-            <p className="name">Edit Boniface</p>
-            <p className="mail">editboniface@gmail.com</p>
-            <button className="btn btn-primary btn-profile">Modifier Profil</button>
-          </div>
-        </div>
+        <Box className="col first-col" display="flex" flexDirection="column" alignItems="center">
+          <IconButton onClick={handleBack} sx={{ position: 'absolute', top: 10, left: 10 }}>x</IconButton>
+          <Typography variant="h5" fontWeight="bold" sx={{ marginBottom: 2 }}>
+            Mon Profil
+          </Typography>
+          <Avatar src={img_url} alt="Profil image" sx={{ width: 100, height: 100, marginBottom: 2 }} />
+          <Typography variant="h6" sx={{ marginBottom: 1 }}>
+            Edit Boniface
+          </Typography>
+          <Typography variant="body2" color="textSecondary" sx={{ marginBottom: 2 }}>
+            editboniface@gmail.com
+          </Typography>
+          <Button variant="contained" color="primary">Modifier Profil</Button>
+        </Box>
 
         {/* Deuxième colonne - Informations supplémentaires */}
-        <div className="col second-col">
+        <Box className="col second-col" sx={{ marginTop: 4 }}>
           {second_row.map((item) => (
-            <div className="marger" key={item.id}>
-              <div className="icon-container">
-                <img src={item.icon} alt={item.title} className="img-icon" />
-              </div>
-              <div className="second">
-                <h4>{item.title}</h4>
-                <p>{item.value}</p>
-              </div>
-            </div>
+            <Box key={item.id} display="flex" alignItems="center" sx={{ marginBottom: 2 }}>
+              <Avatar src={item.icon} alt={item.title} sx={{ width: 30, height: 30, marginRight: 2 }} />
+              <Box>
+                <Typography variant="h6">{item.title}</Typography>
+                <Typography variant="body2" color="textSecondary">{item.value}</Typography>
+              </Box>
+            </Box>
           ))}
-          <button className="btn btn-change">Changer de mot de passe</button>
-        </div>
-      </div>
-    </div>
+          <Button variant="outlined" color="secondary">Changer de mot de passe</Button>
+        </Box>
+      </Box>
+    </Box>
   );
 };
 

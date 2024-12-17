@@ -10,24 +10,23 @@
   background-color: #f8f9fa;
   overflow-y: scroll;
 }
-
 .sidebar {
-  width: 80px;
-  background-color: #013a63;
-  color: white;
+  width: 100px; /* Largeur de la sidebar */
+  background-color: #013a63; /* Couleur de fond */
+  color: white; /* Couleur du texte */
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  /* Aligner les éléments en haut */
-  height: 100vh;
-  /* Hauteur de la sidebar à 100% de la fenêtre */
+  justify-content: flex-start; /* Aligner les éléments en haut */
+  height: 100vh; /* Hauteur de la sidebar à 100% de la fenêtre */
   padding: 20px;
-  position: relative;
-  /* Important pour le positionnement du menu flottant */
-
+  position: fixed; /* Fixer la sidebar */
+  top: 0;
+  left: 0;
+  z-index: 1000; /* Assurer que la sidebar est toujours au-dessus du contenu */
+  
   .logo {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: bold;
     color: white;
     margin-bottom: 40px;
@@ -36,8 +35,7 @@
   .menu ul {
     list-style: none;
     padding: 0;
-    margin-top: 50px;
-    /* Décalage du menu */
+    margin-top: 50px; /* Décalage du menu */
 
     li {
       margin: 20px 0;
@@ -45,37 +43,76 @@
       transition: transform 0.2s;
 
       &.active {
-        color: #fff;
+        color: #fff; /* Couleur de l'élément actif */
         font-weight: bold;
       }
 
       &:hover {
-        transform: scale(1.1);
+        transform: scale(1.1); /* Zoom au survol */
       }
     }
   }
 
   .profile-icon {
-    position: absolute;
+    position: absolute; /* Positionner en bas */
     bottom: 40px;
-    /* Positionner l'icône en bas */
     cursor: pointer;
 
     img {
       width: 50px;
       height: 50px;
       border-radius: 50%;
+      object-fit: cover;
     }
   }
 }
+
+.content {
+  margin-left: 100px; /* Ajuste la marge à gauche pour tenir compte de la sidebar fixe (100px pour la sidebar + 20px pour un espacement supplémentaire) */
+  padding: 20px; /* Espacement pour le contenu */
+  overflow-y: auto; /* Permet le défilement du contenu si nécessaire */
+  
+  .content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+
+    h3 {
+      font-size: 1.5rem;
+      color: #013a63;
+    }
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+
+    .custom-card {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 15px;
+
+      h4 {
+        font-size: 1.2rem;
+        margin: 0;
+      }
+
+      p {
+        font-size: 0.9rem;
+        color: #555;
+      }
+    }
+  }
+}
+
 
 /* Styles du menu flottant */
 .profile-menu {
   position: absolute;
   bottom: 10px;
-  /* Positionner le menu juste au-dessus de l'icône de profil */
   left: 100%;
-  /* Place le menu à droite de l'icône */
   background-color: #fff;
   color: #013a63;
   border: 1px solid #ddd;
@@ -90,16 +127,14 @@
   .profile-menu-content {
     padding: 15px;
 
-    .profile-header {
-      display: flex;
+    .profile-options {
       align-items: center;
       margin-bottom: 10px;
 
-      .profile-img {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        margin-right: 10px;
+      .lien {
+        display: flex;
+        height: 100%;
+        width: 100%;
       }
 
       span {
@@ -155,82 +190,6 @@
   }
 }
 
-
-
-
-.header {
-  display: flex;
-  align-items: center;
-  background-color: #d8e3f3;
-  padding: 20px;
-  border-radius: 10px;
-
-  .user-info {
-    display: flex;
-    align-items: center;
-
-    .profile-picture {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      margin-right: 20px;
-    }
-
-    .welcome-text {
-      h2 {
-        margin: 0;
-        font-size: 1.5rem;
-      }
-
-      p {
-        margin: 0;
-        font-size: 1rem;
-        color: #555;
-      }
-
-      span {
-        font-size: 0.9rem;
-        color: #777;
-      }
-    }
-  }
-}
-
-.content {
-  .content-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-
-    h3 {
-      font-size: 1.5rem;
-      color: #013a63;
-    }
-  }
-
-  .cards {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-
-    .custom-card {
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      padding: 15px;
-
-      h4 {
-        font-size: 1.2rem;
-        margin: 0;
-      }
-
-      p {
-        font-size: 0.9rem;
-        color: #555;
-      }
-    }
-  }
-}
 
 /* profil */
 /* Profil Section */
@@ -684,3 +643,54 @@
       margin-top: 20%;
   }
 }
+.search-bar {
+  display: flex;
+  align-items: center;
+  background-color: #f5f5f5;
+  border-radius: 20px;
+  padding: 8px 10px;
+  width: 250px;
+
+  .icon {
+    color: #888;
+    margin-right: 8px;
+  }
+
+  input {
+    border: none;
+    outline: none;
+    background: transparent;
+    width: 100%;
+    font-size: 14px;
+
+    &::placeholder {
+      color: #aaa;
+    }
+  }
+}
+
+
+.notification {
+  display: flex;
+  align-items: center;
+  color: #333;
+
+  .icon {
+    color: red;
+    cursor: pointer;
+    margin-right: 5px;
+  }
+
+  .count {
+    font-size: 14px;
+  }
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  background-color: transparent;
+}
+

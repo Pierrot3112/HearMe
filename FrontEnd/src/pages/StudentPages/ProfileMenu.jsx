@@ -10,25 +10,25 @@ const ProfileMenu = () => {
         <ul className="profile-options">
           {/* Liens avec React Router */}
           <li>
-            <Link to="/user/profile">
+            <Link to="/user/profile" className="lien">
               <PermIdentityOutlined />
               <p>Profile</p>
             </Link>
           </li>
           <li>
-            <Link to="/user/history">
+            <Link to="/user/history" className="lien">
               <HistoryOutlined />
               <p>Historiques</p>
             </Link>
           </li>
           <li>
-            <Link to="/user/abonment">
+            <Link to="/user/abonment" className="lien">
               <CardTravelOutlined />
               <p>Abonnement</p>
             </Link>
           </li>
           <li>
-            <Link to="/logout">
+            <Link to="/logout" className="lien">
               <LogoutOutlined />
               <p>Se Deconnecter</p>
             </Link>

@@ -6,6 +6,8 @@ import {
   MenuBookOutlined,
   School,
   SchoolOutlined,
+  WorkspacePremium,
+  WorkspacePremiumOutlined,
 } from "@mui/icons-material"; // MUI Icon
 import "./d.scss";
 import UserImage from "../../assets/images/user.jpg";
@@ -13,7 +15,7 @@ import ProfileMenu from "./ProfileMenu";
 
 const Sidebar = ({ onMenuClick }) => {
   const [activeMenu, setActiveMenu] = useState("home");
-  const [profileMenuOpen, setProfileMenuOpen] = useState(false); // État pour gérer l'ouverture du menu de profil
+  const [profileMenuOpen, setProfileMenuOpen] = useState(false);
 
   const handleMenuClick = (menuName) => {
     setActiveMenu(menuName);
@@ -21,7 +23,7 @@ const Sidebar = ({ onMenuClick }) => {
   };
 
   const toggleProfileMenu = () => {
-    setProfileMenuOpen((prev) => !prev); // Toggle pour afficher/masquer le menu flottant du profil
+    setProfileMenuOpen((prev) => !prev);
   };
 
   return (
@@ -59,13 +61,21 @@ const Sidebar = ({ onMenuClick }) => {
               <SchoolOutlined fontSize="large" />
             )}
           </li>
+          <li
+            className={activeMenu === "certification" ? "active" : ""}
+            onClick={() => handleMenuClick("certification")}
+          >
+            {activeMenu === "certification" ? (
+              <WorkspacePremium fontSize="large" />
+            ) : (
+              <WorkspacePremiumOutlined fontSize="large" />
+            )}
+          </li>
         </ul>
       </nav>
       <div className="profile-icon" onClick={toggleProfileMenu}>
         <img src={UserImage} alt="User" />
       </div>
-
-      {/* Menu flottant */}
       {profileMenuOpen && <ProfileMenu />}
     </div>
   );

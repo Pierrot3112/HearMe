@@ -1,12 +1,13 @@
 import React from "react";
-import "./d.scss";
+import user from "../../assets/images/user.jpg"; 
+import "./header.scss";
 
 const Header = () => {
   return (
     <div className="header">
       <div className="user-info">
         <img
-          src="path-to-profile-picture.jpg"
+          src={user}
           alt="Eddy"
           className="profile-picture"
         />
