@@ -25,9 +25,9 @@ const Hero = () => {
         <div className='description'>
           <p> {data.hero.home.description} </p>
         </div>
-        <button className="btn-box" onClick={handleButtonCommencerClick}>
+        <div className="btn-box" onClick={handleButtonCommencerClick}>
           {data.hero.home.button}
-        </button>
+        </div>
       </section>
     </div>
   );

@@ -12,7 +12,7 @@ const SocialMediaIcons = () => {
         href="https://www.facebook.com/"
         target="_blank"
         aria-label="Facebook"
-        color="primary"
+        sx={{ color: 'white' }} 
       >
         <FacebookIcon fontSize="large" />
       </IconButton>
@@ -20,7 +20,7 @@ const SocialMediaIcons = () => {
         href="https://www.instagram.com/"
         target="_blank"
         aria-label="Instagram"
-        sx={{ color: '#E1306C' }} // Custom color for Instagram
+        sx={{ color: 'white' }} // Custom color for Instagram
       >
         <InstagramIcon fontSize="large" />
       </IconButton>
@@ -28,7 +28,7 @@ const SocialMediaIcons = () => {
         href="https://www.linkedin.com/"
         target="_blank"
         aria-label="LinkedIn"
-        color="primary"
+        sx={{ color: 'white' }} 
       >
         <LinkedInIcon fontSize="large" />
       </IconButton>
@@ -36,7 +36,7 @@ const SocialMediaIcons = () => {
         href="https://www.whatsapp.com/"
         target="_blank"
         aria-label="WhatsApp"
-        color="success"
+        sx={{ color: 'white' }} 
       >
         <WhatsAppIcon fontSize="large" />
       </IconButton>

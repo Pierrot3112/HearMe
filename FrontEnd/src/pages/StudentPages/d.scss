@@ -32,23 +32,44 @@
     margin-bottom: 40px;
   }
 
-  .menu ul {
-    list-style: none;
-    padding: 0;
-    margin-top: 50px; /* Décalage du menu */
+  .menu {
+    width: 100%;
+    ul {
+      list-style: none;
+      padding: 0;
 
-    li {
-      margin: 20px 0;
-      cursor: pointer;
-      transition: transform 0.2s;
+      li {
+        position: relative; /* Ajouté pour que le label apparaisse sous l'élément */
+        margin: 55px 0;
+        cursor: pointer;
+        transition: transform 0.2s;
+        text-align: center;
 
-      &.active {
-        color: #fff; /* Couleur de l'élément actif */
-        font-weight: bold;
-      }
+        &.active {
+          color: #fff; /* Couleur de l'élément actif */
+          font-weight: bold;
+        }
 
-      &:hover {
-        transform: scale(1.1); /* Zoom au survol */
+        &:hover {
+          transform: scale(1.1); /* Zoom au survol */
+        }
+
+        .menu-label {
+          position: absolute;
+          bottom: -20px;  /* Positionne le texte sous l'icône */
+          left: 50%;
+          transform: translateX(-50%);
+          font-size: 12px;
+          color: #fff;
+          opacity: 0;  /* Masque le texte par défaut */
+          transition: opacity 0.3s ease;  /* Ajoute une animation pour l'apparition du texte */
+          visibility: hidden; /* Masquer par défaut */
+        }
+
+        &:hover .menu-label {
+          opacity: 1; /* Afficher le texte lorsqu'on survole */
+          visibility: visible; /* Rendre visible le texte */
+        }
       }
     }
   }
@@ -66,6 +87,7 @@
     }
   }
 }
+
 
 .content {
   margin-left: 100px; /* Ajuste la marge à gauche pour tenir compte de la sidebar fixe (100px pour la sidebar + 20px pour un espacement supplémentaire) */

@@ -1,61 +1,64 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import image from "/fond.jfif";
 import "../style/register.scss";
 
 const RegisterPage = () => {
-  const [username, setUsername] = useState(""); // Utilisateur
+  const [username, setUsername] = useState(""); // Nom d'utilisateur
   const [email, setEmail] = useState(""); // Email
   const [password, setPassword] = useState(""); // Mot de passe
   const [confirmPassword, setConfirmPassword] = useState(""); // Confirmation mot de passe
 
+  const [errors, setErrors] = useState({}); // Stocke les erreurs par champ
   const navigate = useNavigate();
+
+  const validateFields = () => {
+    const newErrors = {};
+    if (!username.trim()) {
+      newErrors.username = "Le nom d'utilisateur est obligatoire";
+    } else if (!email.trim()) {
+      newErrors.email = "L'email est obligatoire";
+    } else if (!password.trim()) {
+      newErrors.password = "Le mot de passe est obligatoire";
+    } else if (!confirmPassword.trim()) {
+      newErrors.confirmPassword = "La confirmation du mot de passe est obligatoire";
+    } else if (password !== confirmPassword) {
+      newErrors.confirmPassword = "Les mots de passe ne correspondent pas";
+    }
+    return newErrors;
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-  
-    // Vérification de la correspondance des mots de passe
-    if (password !== confirmPassword) {
-      toast.error("Les mots de passe ne correspondent pas !");
+    const validationErrors = validateFields();
+
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
       return;
     }
-    const urlAPi = process.env.REACT_APP_API_URL || "http://localhost:8080";
-  
-    try {
 
-      // Requête d'inscription
+    setErrors({}); // Réinitialise les erreurs
+
+    const urlAPi = process.env.REACT_APP_API_URL || "http://localhost:8080";
+
+    try {
       const response = await axios.post(`${urlAPi}/api/auth/signup`, {
         username,
         email,
         password,
       });
-  
-      // Gestion des réponses
+
       if (response.status === 200 || response.status === 201) {
-        toast.success("Inscription réussie ! Veuillez vous connecter.");
         navigate("/login");
-      } else {
-        toast.error(response.data.message || "Une erreur est survenue !");
       }
     } catch (error) {
       console.error("Erreur d'inscription :", error);
-      if (error.response && error.response.data) {
-        toast.error(error.response.data.message || "Erreur lors de l'inscription.");
-      } else {
-        toast.error("Une erreur réseau est survenue, veuillez réessayer !");
-        console.log(urlAPi);
-        
-      }
     }
   };
-  
 
   return (
     <div className="register-container">
-      <ToastContainer />
       <div className="left-section">
         <img src={image} alt="background" />
         <div className="content">
@@ -78,38 +81,56 @@ const RegisterPage = () => {
         <h2>Inscription</h2>
         <div className="underline"></div>
         <form className="register-form" onSubmit={handleSubmit}>
-          <input
-            type="text"
-            placeholder="Entrez votre nom d'utilisateur"
-            className="form-control"
-            value={username}
-            onChange={(event) => setUsername(event.target.value)}
-            required
-          />
-          <input
-            type="email"
-            placeholder="Entrez votre e-mail"
-            className="form-control"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-            required
-          />
-          <input
-            type="password"
-            placeholder="Entrez un mot de passe"
-            className="form-control"
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-            required
-          />
-          <input
-            type="password"
-            placeholder="Confirmer votre mot de passe"
-            className="form-control"
-            value={confirmPassword}
-            onChange={(event) => setConfirmPassword(event.target.value)}
-            required
-          />
+          {/* Nom d'utilisateur */}
+          <div className="form-group">
+            <input
+              type="text"
+              placeholder="Entrez votre nom d'utilisateur"
+              className={`form-control ${errors.username ? "error-border" : ""}`}
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            {errors.username && <span className="error-message">{errors.username}</span>}
+          </div>
+
+          {/* Email */}
+          <div className="form-group">
+            <input
+              type="email"
+              placeholder="Entrez votre e-mail"
+              className={`form-control ${errors.email ? "error-border" : ""}`}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            {errors.email && <span className="error-message">{errors.email}</span>}
+          </div>
+
+          {/* Mot de passe */}
+          <div className="form-group">
+            <input
+              type="password"
+              placeholder="Entrez un mot de passe"
+              className={`form-control ${errors.password ? "error-border" : ""}`}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            {errors.password && <span className="error-message">{errors.password}</span>}
+          </div>
+
+          {/* Confirmation mot de passe */}
+          <div className="form-group">
+            <input
+              type="password"
+              placeholder="Confirmer votre mot de passe"
+              className={`form-control ${errors.confirmPassword ? "error-border" : ""}`}
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+            />
+            {errors.confirmPassword && (
+              <span className="error-message">{errors.confirmPassword}</span>
+            )}
+          </div>
+
           <button type="submit">Créer mon compte</button>
         </form>
       </div>

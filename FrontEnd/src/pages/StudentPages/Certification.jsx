@@ -76,18 +76,7 @@ const Certification = () => {
           </Box>
         </Box>
 
-        {/*<Box flex={1} display="flex" justifyContent="center">
-          <img
-            src={Person}
-            alt="Certified Person"
-            style={{
-              maxWidth: "60%",
-              height: "auto",
-              borderRadius: "8px",
-              boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-            }}
-          />
-        </Box>*/}
+       
       </Box>
 
       <hr />

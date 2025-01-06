@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import { IconButton } from '@mui/material';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow'
 
-import video from '../assets/video/video.mp4'
+import video from '../assets/video/backHomee.mp4'
 
 const VideoPlayer = () => {
     const videoRef = useRef(null);

@@ -1,6 +1,6 @@
 // Variables SCSS
 $primary-blue: #015499;
-$white: #FFFFFF;
+$white: hsl(0, 0%, 100%);
 $light-gray: #F5F5F5;
 $dark-br: #2C3749;
 $text-dark: #2C3749;
@@ -351,3 +351,127 @@ header {
         }
     }
 }
+
+.about {
+    padding: 20px 120px;
+
+    .about-container {
+        display: flex;
+        justify-content: center;
+        margin: 50px 0;
+        height: 350px;
+
+        .c {
+            flex-grow: 1;
+            height: 100%;
+            width: 50%;
+            border: 1px solid black;
+            border-radius: 50px 0 50px 0;
+        }
+
+        .desc {
+            flex-grow: 2;
+            width: 50%;
+            padding: 5px 20px;
+        }
+    }
+
+   
+}
+
+.contact-container {
+    display: flex;
+
+    .contact-form {
+        flex-grow: 1;
+        width: 50%;
+
+        form {
+            .form-group {
+                margin-bottom: 15px;
+
+                input,
+                textarea {
+                    width: 60%;
+                    padding: 10px;
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                    font-size: 1rem;
+                    background-color: rgba(209, 208, 208, 0.452);
+                    transition: border 0.3s ease-in-out;
+                }
+
+                input.error-input,
+                textarea.error-input {
+                    border: 2px solid red;
+                }
+
+                .error-message {
+                    color: red;
+                    font-size: 0.875rem;
+                    margin-top: 5px;
+                    display: block;
+                    animation: fadeIn 0.5s ease-in-out;
+                }
+
+                textarea {
+                    height: 100px;
+                }
+
+                button {
+                    border: none;
+                    border-radius: 15px;
+                    padding: 10px 20px;
+                    background-color: #007bff;
+                    color: white;
+                    font-size: 1rem;
+                    cursor: pointer;
+                    transition: background-color 0.3s ease;
+
+                    &:hover {
+                        background-color: #0056b3;
+                    }
+                }
+            }
+        }
+    }
+
+    .contact-image {
+        flex-grow: 2;
+        height: 500px;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 10px;
+        }
+    }
+}
+
+// Animation des messages d'erreur
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.contact-page-container {
+
+    .head-mask {
+        height: 70px;
+        background-color: $primary-blue;
+    }
+
+    .contact-content {
+        padding: 20px 120px;
+    }
+}
+
+

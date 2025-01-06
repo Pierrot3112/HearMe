@@ -18,7 +18,7 @@ const Content = ({ activeMenu }) => {
     case "evaluation":
       content = <Evaluation />;
       break;
-    case "":
+    case "certification":
       content = <Certification />;
       break;
   }

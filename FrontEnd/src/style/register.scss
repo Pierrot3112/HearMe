@@ -1,120 +1,149 @@
 .register-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  max-width: 1349px;
+  margin: 0;
+  background-color: #f8f9fa;
+
+  .left-section {
+    flex: 1;
+    color: #fff;
+    background-color: #015499;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 100vh;
-    width: 100%; 
-    max-width: 1349px; 
-    margin: 0; 
-    background-color: #f8f9fa;
-  
-    .left-section {
-      flex: 1;
-      color: #fff;
-      background-color: #015499;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      position: relative; 
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    height: 100%;
+    width: 50%;
+    overflow: hidden;
+
+    img {
       height: 100%;
-      width: 50%; 
-      overflow: hidden; 
-  
-      img {
-        height: 100%;
-        width: 100%;
-        object-fit: cover; 
-        position: absolute;
-        top: 0;
-        left: 0;
-        opacity: 30%; 
+      width: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 30%;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      padding: 20px;
+      text-align: center;
+
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        line-height: 1.5;
+        font-family: 'Mongolian Baiti', sans-serif;
       }
-  
-      .content {
-        position: relative;
-        z-index: 1;
-        padding: 20px;
-        text-align: center;
-  
-        h1 {
-          font-size: 2.5rem;
-          margin-bottom: 20px;
-          line-height: 1.5;
-          font-family: 'Mongolian Baiti', sans-serif;
-        }
-  
-        p {
-          font-size: 1rem;
-          margin-bottom: 15px;
-        }
-  
-        .login-link {
-          color: #f8f9fa;
-          text-decoration: underline;
-          font-weight: bold;
-        }
+
+      p {
+        font-size: 1rem;
+        margin-bottom: 15px;
+      }
+
+      .login-link {
+        color: #f8f9fa;
+        text-decoration: underline;
+        font-weight: bold;
       }
     }
-  
-    .right-section {
-      flex: 1;
-      padding: 20px;
-      background-color: transparent; 
+  }
+
+  .right-section {
+    flex: 1;
+    padding: 20px;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    .underline {
+      width: 80px;
+      height: 4px;
+      background-color: #015499;
+      margin-bottom: 20px;
+    }
+
+    .register-form {
+      width: 100%;
+      max-width: 400px;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      width: 50%; 
-  
-      h2 {
-        font-size: 1.8rem;
-        margin-bottom: 10px;
-      }
-  
-      .underline {
-        width: 80px;
-        height: 4px;
-        background-color: #015499;
-        margin-bottom: 20px;
-      }
-  
-      .register-form {
-        width: 100%;
-        max-width: 400px;
-        display: flex;
-        flex-direction: column;
-  
-        input {
-          margin-bottom: 15px;
+
+      .form-group {
+        margin-bottom: 15px;
+        position: relative;
+
+        .form-control {
+          width: 100%;
           padding: 12px 15px;
           border: 1px solid #ced4da;
           border-radius: 5px;
           font-size: 1rem;
           transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  
+
           &:focus {
             outline: none;
             border-color: #015499;
             box-shadow: 0 0 5px rgba(1, 84, 153, 0.5);
           }
         }
-  
-        button {
-          padding: 12px 20px;
-          background-color: #015499;
-          color: #fff;
-          border: none;
-          border-radius: 5px;
-          font-size: 1rem;
-          font-weight: bold;
-          cursor: pointer;
-          transition: background-color 0.3s ease;
-  
-          &:hover {
-            background-color: #004099;
-          }
+
+        .error-border {
+          border: 1px solid red;
+        }
+
+        .error-message {
+          color: red;
+          font-size: 0.9rem;
+          margin-top: 5px;
+          position: absolute;
+          left: 5px;
+          animation: fadeIn 0.3s ease-in-out; /* Animation pour l'apparition */
+        }
+      }
+
+      button {
+        padding: 12px 20px;
+        background-color: #015499;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: #004099;
         }
       }
     }
   }
-  
+}
+
+/* Animation d'apparition des messages d'erreur */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

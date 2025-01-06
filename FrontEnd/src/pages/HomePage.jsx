@@ -5,6 +5,8 @@ import Footer from '../Components/Footer';
 import FormationCard from '../Components/FormationCard';
 import Hero from '../Components/Hero.homePage';
 import Decouvert from '../Components/Decouvert';
+import Partenaires from '../Components/Partenaires';
+import Temoignages from '../Components/Testimonial';
 
 
 function HomePage() {
@@ -29,9 +31,10 @@ function HomePage() {
         <Decouvert />
       </div>
       <div>
-        <br />
-        <br />
-        <br />
+        <Partenaires />
+      </div>
+      <div>
+        <Temoignages />
       </div>
       <Footer />
     </div>
